@@ -275,7 +275,7 @@ BEGIN axi_s6_ddrx
  PARAMETER C_MEM_NUM_COL_BITS = 10
  PARAMETER C_SKIP_IN_TERM_CAL = 0
  PARAMETER C_S0_AXI_ENABLE = 1
- PARAMETER C_INTERCONNECT_S0_AXI_MASTERS = microblaze_0.M_AXI_DC & microblaze_0.M_AXI_IC & axi_vdma_0.M_AXI_S2MM
+ PARAMETER C_INTERCONNECT_S0_AXI_MASTERS = microblaze_0.M_AXI_DC & microblaze_0.M_AXI_IC & axi_vdma_0.M_AXI_S2MM & axi_vdma_0.M_AXI_MM2S
  PARAMETER C_MEM_DDR2_RTT = 50OHMS
  PARAMETER C_S0_AXI_STRICT_COHERENCY = 0
  PARAMETER C_INTERCONNECT_S0_AXI_AW_REGISTER = 8
@@ -387,6 +387,8 @@ BEGIN axi_vdma
  BUS_INTERFACE S_AXI_LITE = axi4lite_0
  BUS_INTERFACE M_AXI_S2MM = axi4_0
  BUS_INTERFACE S_AXIS_S2MM = axi_hdmi_0_M_AXIS_S2MM
+ BUS_INTERFACE M_AXIS_MM2S = axi_vdma_0_M_AXIS_MM2S
+ BUS_INTERFACE M_AXI_MM2S = axi4_0
  PORT s_axi_lite_aclk = clk_100_0000MHzPLL0
  PORT m_axi_s2mm_aclk = clk_100_0000MHzPLL0
  PORT mm2s_introut = axi_vdma_0_mm2s_introut
@@ -396,6 +398,7 @@ BEGIN axi_vdma
  PORT m_axis_mm2s_aclk = axi_hdmi_0_S_AXIS_MM2S_ACLK
  PORT mm2s_fsync_out = axi_vdma_0_mm2s_fsync_out
  PORT mm2s_buffer_almost_empty = axi_vdma_0_mm2s_buffer_almost_empty
+ PORT m_axi_mm2s_aclk = clk_100_0000MHzPLL0
 END
 
 BEGIN axi_hdmi
@@ -407,6 +410,7 @@ BEGIN axi_hdmi
  PARAMETER C_HIGHADDR = 0x7e22ffff
  BUS_INTERFACE S_AXI = axi4lite_0
  BUS_INTERFACE M_AXIS_S2MM = axi_hdmi_0_M_AXIS_S2MM
+ BUS_INTERFACE S_AXIS_MM2S = axi_vdma_0_M_AXIS_MM2S
  PORT S_AXI_ACLK = clk_100_0000MHzPLL0
  PORT TMDS_RX_CLK_P = axi_hdmi_0_TMDS_RX_CLK_P
  PORT TMDS_RX_CLK_N = axi_hdmi_0_TMDS_RX_CLK_N

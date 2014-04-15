@@ -15,6 +15,7 @@ void IicHandler(void *CallBackRef)
 			Xil_Out32(IIC_BASEADDR + bIicTX, 0x000000FF & rgbEdid[ibEdid]);
 			ibEdid++;
 		}
+		iicIntTimes++;
 	}
 	if (Xil_In32(IIC_BASEADDR + bIicISR) & bitTxDoneFlag)// bit1 transmit complete(slave)
 	{
@@ -30,7 +31,7 @@ void IicHandler(void *CallBackRef)
 	//print("ISR Reg: ");putnum(value);print("\r\n");
 	Xil_Out32(IIC_BASEADDR + bIicISR, Xil_In32(IIC_BASEADDR + bIicISR));
 
-	iicIntTimes++;
+
 	//printf("iic int times is: %d \r\n", iicIntTimes);
 	//putnum(iicIntTimes);
 
