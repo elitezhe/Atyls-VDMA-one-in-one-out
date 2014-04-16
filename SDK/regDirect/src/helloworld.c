@@ -99,7 +99,7 @@ int main()
 		}
 
 	}
-	Xil_Out32(XPAR_AXI_HDMI_0_BASEADDR, 1280*720);
+	Xil_Out32(XPAR_AXI_HDMI_0_BASEADDR, 640*480);
 	u32 ResolutionValue;
 	ResolutionValue = Xil_In32(XPAR_AXI_HDMI_0_BASEADDR);
 	//putnum(ResolutionValue);
@@ -116,14 +116,14 @@ int main()
 	writeVdma(0xb0, 0xaa000000);
 	writeVdma(0xb4, 0xab000000);
 
-	writeVdma(0x58, 0x00000780);
-	writeVdma(0x54, 0x00000780);
+	writeVdma(0x58, 640*4);
+	writeVdma(0x54, 640*4);
 
-	writeVdma(0xa8, 0x00000780);
-	writeVdma(0xa4, 0x00000780);
+	writeVdma(0xa8, 640*4);
+	writeVdma(0xa4, 640*4);
 
-	writeVdma(0xa0, 0x000001e0);
-	writeVdma(0x50, 0x000001e0);
+	writeVdma(0xa0, 480);
+	writeVdma(0x50, 480);
 
 	while(1)
 	{
