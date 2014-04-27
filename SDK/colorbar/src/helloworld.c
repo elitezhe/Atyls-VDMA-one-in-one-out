@@ -40,6 +40,13 @@ int main()
     print("Hello World\r\n");
 
     int Status;
+
+	Xil_Out32(XPAR_AXI_HDMI_0_BASEADDR, 1600*900);
+	u32 ResolutionValue;
+	ResolutionValue = Xil_In32(XPAR_AXI_HDMI_0_BASEADDR);
+	printf("HDMI Base Value is: 0x%x \r\n", ResolutionValue);
+
+
     XAxiVdma_Config *Config;
     XAxiVdma_FrameCounter FrameCfg;
 
@@ -154,10 +161,7 @@ int main()
 
 	printf("RdChannel Base is: %x \r\n", AxiVdma.ReadChannel.ChanBase);
 
-	Xil_Out32(XPAR_AXI_HDMI_0_BASEADDR, 1600*900);
-	u32 ResolutionValue;
-	ResolutionValue = Xil_In32(XPAR_AXI_HDMI_0_BASEADDR);
-	printf("HDMI Base Value is: 0x%x \r\n", ResolutionValue);
+
 
 	return 0;
 }
